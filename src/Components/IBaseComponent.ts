@@ -1,0 +1,10 @@
+import { Interface } from "node:readline";
+
+export interface   IBaseComponent{
+    Id:string;
+    name:string;
+    style:string;
+    isComponent:boolean;
+    draggable:boolean;
+    Create():HTMLElement
+}
