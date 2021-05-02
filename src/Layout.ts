@@ -1,8 +1,9 @@
 import { table } from "node:console";
 import { ContainerComponent } from "./Components/ContainerComponent.js";
-import { TextboxComponent } from "./Components/TextboxComponent.js";
+import { LTextboxComponent } from "./Components/LTextboxComponent.js";
 import { IBaseComponent } from "./Components/IBaseComponent.js";
 import { DivComponent } from "./Components/DivComponent.js";
+import { ComponentHelper } from "./Common/ComponentHelper.js";
 export class  Layout {
     constructor()
     {
@@ -38,38 +39,24 @@ export class  Layout {
             var data = x.dataTransfer.getData("text");
             if(x.currentTarget==x.target)
             {
-                var cmp=this.GetHTMLElement("","",data);            
+                var cmp=ComponentHelper.Create("","",data);            
                 element.appendChild(cmp);
                 element.className="";
             }
         };
         document.getElementById("MainPanel").appendChild(layoutPanel);
-        let tb : IBaseComponent= new TextboxComponent()
+        let tb : IBaseComponent= new LTextboxComponent("LTextbox")
         tb.isComponent=true;
         tb.draggable=true;
-        document.getElementById("components").appendChild(tb.Create());
-        tb =new ContainerComponent();
+        document.getElementById("components").appendChild(tb.Create(null));
+        tb =new ContainerComponent("Container");
         tb.isComponent=true;
         tb.draggable=true;
-        document.getElementById("components").appendChild(tb.Create());
-    }
-
-    GetHTMLElement(controlId:string="" ,controlName:string="",controlType:string=""): HTMLElement {
-        var item=new DivComponent();
-          switch (controlType) {
-              case "cTextbox":
-                  item=new TextboxComponent();
-                  break;
-              case "cContainer":
-                  item=new ContainerComponent();
-                    break;
-              default:
-                  break;
-          }
-          item.Id=controlId;
-          item.name=controlName;          
-          item.isComponent=false;
-        return item.Create();
+        document.getElementById("components").appendChild(tb.Create(null));
+        tb =new DivComponent("Div");
+        tb.isComponent=true;
+        tb.draggable=true;
+        document.getElementById("components").appendChild(tb.Create(null));
     }
 };
 

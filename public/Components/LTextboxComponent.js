@@ -1,21 +1,24 @@
-export class TextboxComponent {
-    constructor() {
-        this.Id = "cTextbox";
+import { BaseComponent } from "./BaseComponent.js";
+export class LTextboxComponent extends BaseComponent {
+    constructor(id) {
+        id = "LTextbox";
+        super(id);
     }
     Create() {
-        var container = document.createElement('div');
-        container.setAttribute("iscomponent", String(this.isComponent));
-        container.appendChild(this.CreateLabel());
+        var control = document.createElement('div');
+        control.setAttribute("iscomponent", String(this.isComponent));
+        control.appendChild(this.CreateLabel());
         // container.appendChild(this.CreateTextbox());
-        container.setAttribute("style", "background-color:#bd213014;width:100px");
-        container.id = this.Id;
-        container.draggable = this.draggable;
-        container.ondragstart = x => {
+        control.setAttribute("style", "background-color:#bd213014;width:100px");
+        control.id = this.Id;
+        control.draggable = this.draggable;
+        control.ondragstart = x => {
             const element = x.target;
             x.dataTransfer.effectAllowed = "move";
             x.dataTransfer.setData("text", element.id);
         };
-        return container;
+        super.Create(control);
+        return control;
     }
     CreateLabel() {
         var label = document.createElement("label");

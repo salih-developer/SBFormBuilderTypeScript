@@ -6,5 +6,5 @@ export interface   IBaseComponent{
     style:string;
     isComponent:boolean;
     draggable:boolean;
-    Create():HTMLElement
+    Create(control :HTMLElement):HTMLElement
 }
