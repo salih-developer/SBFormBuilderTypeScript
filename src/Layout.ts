@@ -4,6 +4,7 @@ import { LTextboxComponent } from "./Components/LTextboxComponent.js";
 import { IBaseComponent } from "./Components/IBaseComponent.js";
 import { DivComponent } from "./Components/DivComponent.js";
 import { ComponentHelper } from "./Common/ComponentHelper.js";
+import { LSelectboxComponent } from "./Components/LSelectboxComponent.js";
 export class  Layout {
     constructor()
     {
@@ -45,10 +46,17 @@ export class  Layout {
             }
         };
         document.getElementById("MainPanel").appendChild(layoutPanel);
+
         let tb : IBaseComponent= new LTextboxComponent("LTextbox")
         tb.isComponent=true;
         tb.draggable=true;
         document.getElementById("components").appendChild(tb.Create(null));
+        
+        tb =new LSelectboxComponent("LSelectbox");
+        tb.isComponent=true;
+        tb.draggable=true;
+        document.getElementById("components").appendChild(tb.Create(null));
+
         tb =new ContainerComponent("Container");
         tb.isComponent=true;
         tb.draggable=true;

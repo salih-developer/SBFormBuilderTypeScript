@@ -1,8 +1,8 @@
 import { BaseComponent } from "./BaseComponent.js";
 
-export class LTextboxComponent extends BaseComponent{
+export class LSelectboxComponent extends BaseComponent{
     constructor(id:string) {
-        id="LTextbox";
+        id="LSelectbox";
         super(id);
     }
     Create(): HTMLElement {
@@ -11,7 +11,7 @@ export class LTextboxComponent extends BaseComponent{
                 
                 control.appendChild(this.CreateLabel());
                 control.appendChild(this.CreateTextbox());
-                control.setAttribute("compName","LTextbox");
+                control.setAttribute("compName","LSelectbox");
                 control.setAttribute("disabled","");
                control.setAttribute("style","background-color:#bd213014;")
                control.id=this.Id;
@@ -26,14 +26,15 @@ export class LTextboxComponent extends BaseComponent{
     } 
             private CreateLabel(){
                 var label=document.createElement("label");
-                label.textContent="Label Textbox";
+                label.textContent="Label SelectBox";
                 label.setAttribute("style","margin-right: 26px");
                 return label;
             }
             private  CreateTextbox(){
-               var textbox= document.createElement("input");
+               var textbox= document.createElement("select");
                textbox.setAttribute("type","text");
                textbox.setAttribute("disabled","");
+               textbox.setAttribute("style","width: 100px;");
                return textbox;
             }
     

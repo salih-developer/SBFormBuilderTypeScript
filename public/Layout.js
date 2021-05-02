@@ -2,6 +2,7 @@ import { ContainerComponent } from "./Components/ContainerComponent.js";
 import { LTextboxComponent } from "./Components/LTextboxComponent.js";
 import { DivComponent } from "./Components/DivComponent.js";
 import { ComponentHelper } from "./Common/ComponentHelper.js";
+import { LSelectboxComponent } from "./Components/LSelectboxComponent.js";
 export class Layout {
     constructor() {
         var layoutPanel = document.createElement('div');
@@ -37,6 +38,10 @@ export class Layout {
         };
         document.getElementById("MainPanel").appendChild(layoutPanel);
         let tb = new LTextboxComponent("LTextbox");
+        tb.isComponent = true;
+        tb.draggable = true;
+        document.getElementById("components").appendChild(tb.Create(null));
+        tb = new LSelectboxComponent("LSelectbox");
         tb.isComponent = true;
         tb.draggable = true;
         document.getElementById("components").appendChild(tb.Create(null));
