@@ -33,27 +33,18 @@ export abstract class BaseComponent implements IBaseComponent{
       var tb=document.createElement("div");
       tb.id="toolbar";
       tb.className="toolbar";
-<<<<<<< HEAD
       tb.setAttribute("style","height: 20px;width: 100%;");
-=======
-      tb.setAttribute("style","height: 20px;");
->>>>>>> dcf3c1d049c8ce2c5b854f233dddc20d4878a7cd
       var tball=document.createElement("div");
       tball.className="component-btn-group";
       var tbRemove=document.createElement("div");
       tbRemove.className="btn btn-xxs btn-danger component-settings-button component-settings-button-remove";
       tbRemove.addEventListener('click', function (event) {
-<<<<<<< HEAD
         var ppanel=document.getElementById("cpropGrid");
         ppanel.childNodes.forEach(element => {
           element.remove();
         });
         var eln=event.currentTarget as HTMLElement;
         eln.parentElement.parentElement.parentElement.remove();
-=======
-        alert('sil');
-        
->>>>>>> dcf3c1d049c8ce2c5b854f233dddc20d4878a7cd
       });
       var removei=document.createElement("i");
       removei.className="fa fa-remove";
@@ -61,7 +52,6 @@ export abstract class BaseComponent implements IBaseComponent{
       var tbEdit=document.createElement("div");
       tbEdit.className="btn btn-xxs btn-secondary component-settings-button component-settings-button-edit";
       tbEdit.addEventListener('click', function (event) {
-<<<<<<< HEAD
         var ppanel=document.getElementById("cpropGrid");
       ppanel.childNodes.forEach(element => {
         element.remove();
@@ -70,10 +60,7 @@ export abstract class BaseComponent implements IBaseComponent{
               var componentProperties=new ComponentProperties();
               var table=componentProperties.Create(eln.parentElement.parentElement.parentElement);
               ppanel.appendChild(table);
-=======
-        alert('property');
->>>>>>> dcf3c1d049c8ce2c5b854f233dddc20d4878a7cd
-      });
+     });
       var editi=document.createElement("i");
       editi.className="fa fa-cog";
       tbEdit.appendChild(editi)
@@ -82,10 +69,6 @@ export abstract class BaseComponent implements IBaseComponent{
       tb.appendChild(tball);
       return tb;
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> dcf3c1d049c8ce2c5b854f233dddc20d4878a7cd
     CreateSpan(cicon:string,title:string): HTMLElement {
       var i=document.createElement("i");
       i.className=cicon;
