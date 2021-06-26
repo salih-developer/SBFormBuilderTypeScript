@@ -40,7 +40,7 @@ export class  Layout {
             var data = x.dataTransfer.getData("text");
             if(x.currentTarget==x.target)
             {
-                var cmp=ComponentHelper.Create("","",data);            
+                var cmp=ComponentHelper.Create(data);            
                 element.appendChild(cmp);
                 element.className="";
             }

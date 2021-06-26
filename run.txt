@@ -1,3 +1,6 @@
+
+npm install build
+
 npm install -g serve
 
 serve <path> 

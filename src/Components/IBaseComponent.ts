@@ -7,4 +7,5 @@ export interface   IBaseComponent{
     isComponent:boolean;
     draggable:boolean;
     Create(control :HTMLElement):HTMLElement
+    CreateToolBar():HTMLElement
 }

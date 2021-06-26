@@ -2,11 +2,9 @@
 <html>    
     <head>
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css"/>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <style>
-         .droptarget {
+        <style>.droptarget {
             border: 1px dotted #e60e0e;
           }
           .divcoll {
@@ -16,19 +14,6 @@
           .row {
               border-bottom: 1px solid #8080806b;
           } 
-          .ContainerColumn{
-            border:1px solid #80808087;
-        }
-          div.ContainerColumn:hover{
-              background-color: #cac6c6;
-          }
-        
-          .margin0{
-              margin: 0px;
-          }
-          .toolbar{
-              background-color: aliceblue;
-          }
         .pgTable {
         border: solid 1px #95B8E7;
         border-spacing: 0;
@@ -38,7 +23,6 @@
         .pgGroupRow {
         background-color: #E0ECFF;
         font-weight: bold;
-        text-align: center;
         }
         
         .pgGroupCell {
@@ -51,8 +35,7 @@
         }
 .propGrid{
     margin: 0px !important;
-    width: 100%;    
-    
+    width: 100%;
 }
         /* div[compname="Container"] :hover {
             -webkit-transform: scale(1.2);
@@ -62,44 +45,17 @@
          div[compname="LTextbox"] :hover {
             border: dotted 1px #e79595;
         } */
-
-        .component-btn-group {
-            position: absolute;
-            z-index: 1000;
-            margin-top: -2px;
-        }
-        .component-settings-button {
-            padding: 2px 2px;
-            font-size: 10px;
-            line-height: 1.2em;
-            border-radius: 0;
-            width: 18px;
-            height: 18px;
-        }
-        .fa {
-            display: inline-block;
-            font: normal normal normal 14px/1 FontAwesome;
-            font-size: inherit;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        body{
-            font-size: 13px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
         </style>
     </head>
     <body>
 
         <div class="container-fluid">
             <div class="row">
-            <div class="col-2" style="background-color: #80808047;padding: 0px;" >
-                <div class="pgGroupRow"><label style="margin-right: 26px">Kontroller</label></div>
-
+            <div class="col-3">
+                <div>Kontroller</div>
                 <div id=components></div>
             </div>
-            <div class="col-7" id="MainPanel">
+            <div class="col-6" id="MainPanel">
                 
             </div>
             <div class="col-3" style="background-color: #80808047;padding: 0px;" id="cpropGrid">

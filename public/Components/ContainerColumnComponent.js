@@ -1,35 +1,41 @@
 import { ComponentHelper } from "../Common/ComponentHelper.js";
 export class ContainerColumnComponent {
+    CreateSpan(cicon) {
+        throw new Error("Method not implemented.");
+    }
+    CreateToolBar() {
+        throw new Error("Method not implemented.");
+    }
     Create() {
         var cdiv = document.createElement('div');
         cdiv.setAttribute("iscomponent", "false");
         if (!this.isComponent)
             cdiv.setAttribute("compName", "ContainerColumn");
-        cdiv.setAttribute("class", "col-5");
-        cdiv.setAttribute("style", "min-height: 50px;margin: 10px;");
+        //cdiv.setAttribute("class","col-5");
+        //cdiv.setAttribute("style","min-height: 50px;margin: 10px;");   
         cdiv.id = this.Id;
-        cdiv.className = "divcoll";
+        cdiv.className = "col-6 ContainerColumn";
         cdiv.draggable = false;
         cdiv.ondrop = x => {
             x.preventDefault();
             const element = ((x.target == x.currentTarget) ? x.currentTarget : x.target);
             var data = x.dataTransfer.getData("text");
             if (x.currentTarget == x.target) {
-                var cmp = ComponentHelper.Create("", "", data);
+                var cmp = ComponentHelper.Create(data);
                 element.appendChild(cmp);
-                element.className = "col-5 divcoll";
+                // element.className="col-5 divcoll" ;
             }
         };
         cdiv.ondragleave = x => {
             x.preventDefault();
             const element = ((x.target == x.currentTarget) ? x.currentTarget : x.target);
-            element.className = "col-5 divcoll";
+            //element.className="col-6";
             //this.ClearTempDiv(element);    
         };
         cdiv.ondragenter = x => {
             x.preventDefault();
             const element = ((x.target == x.currentTarget) ? x.currentTarget : x.target);
-            element.className = "col-5 droptarget";
+            element.className = "col-6 ContainerColumn";
         };
         return cdiv;
     }

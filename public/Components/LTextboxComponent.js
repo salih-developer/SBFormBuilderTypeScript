@@ -1,18 +1,23 @@
 import { BaseComponent } from "./BaseComponent.js";
 export class LTextboxComponent extends BaseComponent {
     constructor(id) {
-        id = "LTextbox";
         super(id);
     }
     Create() {
         var control = document.createElement('div');
         control.setAttribute("iscomponent", String(this.isComponent));
-        control.appendChild(this.CreateLabel());
-        control.appendChild(this.CreateTextbox());
+        if (!this.isComponent) {
+            let toolbar = super.CreateToolBar();
+            control.appendChild(toolbar);
+            control.appendChild(this.CreateLabel());
+            control.appendChild(this.CreateTextbox());
+        }
+        else {
+            control.appendChild(super.CreateSpan("fa fa-terminal", "Text Field"));
+        }
         control.setAttribute("compName", "LTextbox");
         control.setAttribute("disabled", "");
-        control.setAttribute("style", "background-color:#bd213014;");
-        control.id = this.Id;
+        control.setAttribute("style", "background-color:#bd213014; margin: 5PX;");
         control.draggable = this.draggable;
         control.ondragstart = x => {
             const element = x.target;

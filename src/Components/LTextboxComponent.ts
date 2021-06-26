@@ -2,19 +2,25 @@ import { BaseComponent } from "./BaseComponent.js";
 
 export class LTextboxComponent extends BaseComponent{
     constructor(id:string) {
-        id="LTextbox";
         super(id);
     }
     Create(): HTMLElement {
                 var control=document.createElement('div');
                 control.setAttribute("iscomponent",String(this.isComponent));
-                
+                if(!this.isComponent)
+                {
+                let toolbar=super.CreateToolBar();
+                control.appendChild(toolbar);
                 control.appendChild(this.CreateLabel());
                 control.appendChild(this.CreateTextbox());
+                }else
+                {
+                    control.appendChild(super.CreateSpan("fa fa-terminal","Text Field"));
+                }
+                
                 control.setAttribute("compName","LTextbox");
                 control.setAttribute("disabled","");
-               control.setAttribute("style","background-color:#bd213014;")
-               control.id=this.Id;
+               control.setAttribute("style","background-color:#bd213014; margin: 5PX;")
                control.draggable=this.draggable;
                control.ondragstart=x=>{
                     const element = x.target as HTMLInputElement
@@ -24,6 +30,7 @@ export class LTextboxComponent extends BaseComponent{
                 super.Create(control);
                 return control;
     } 
+       
             private CreateLabel(){
                 var label=document.createElement("label");
                 label.textContent="Label Textbox";
@@ -36,5 +43,6 @@ export class LTextboxComponent extends BaseComponent{
                textbox.setAttribute("disabled","");
                return textbox;
             }
+            
     
 }

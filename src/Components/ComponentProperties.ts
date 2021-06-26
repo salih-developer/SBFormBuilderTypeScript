@@ -40,9 +40,6 @@ export class ComponentProperties{
     cell.className="pgCell";
     var txt=document.createElement("input");
     cell.appendChild(txt);
-
-
-    
     
     var  div=document.createElement("div");
     div.className="propGrid";
