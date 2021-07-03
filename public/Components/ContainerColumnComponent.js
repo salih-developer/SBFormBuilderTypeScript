@@ -35,7 +35,7 @@ export class ContainerColumnComponent {
         cdiv.ondragenter = x => {
             x.preventDefault();
             const element = ((x.target == x.currentTarget) ? x.currentTarget : x.target);
-            element.className = "col-6 ContainerColumn";
+            // element.className="col-6 ContainerColumn";
         };
         return cdiv;
     }

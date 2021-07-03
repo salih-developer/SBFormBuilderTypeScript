@@ -5,6 +5,8 @@ import { IBaseComponent } from "./Components/IBaseComponent.js";
 import { DivComponent } from "./Components/DivComponent.js";
 import { ComponentHelper } from "./Common/ComponentHelper.js";
 import { LSelectboxComponent } from "./Components/LSelectboxComponent.js";
+import { TabComponent } from "./Components/TabComponent.js";
+import { DataTableComponent } from "./Components/DataTableComponent.js";
 export class  Layout {
     constructor()
     {
@@ -61,7 +63,18 @@ export class  Layout {
         tb.isComponent=true;
         tb.draggable=true;
         document.getElementById("components").appendChild(tb.Create(null));
+        
         tb =new DivComponent("Div");
+        tb.isComponent=true;
+        tb.draggable=true;
+        document.getElementById("components").appendChild(tb.Create(null));
+
+        tb =new TabComponent("Tabs");
+        tb.isComponent=true;
+        tb.draggable=true;
+        document.getElementById("components").appendChild(tb.Create(null));
+
+        tb =new DataTableComponent("DataTable");
         tb.isComponent=true;
         tb.draggable=true;
         document.getElementById("components").appendChild(tb.Create(null));

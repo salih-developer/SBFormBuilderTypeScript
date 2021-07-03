@@ -1,3 +1,4 @@
+import { ComponentHelper } from "../Common/ComponentHelper.js";
 import { BaseComponent } from "./BaseComponent.js";
 
 export class DivComponent extends BaseComponent
@@ -12,15 +13,36 @@ export class DivComponent extends BaseComponent
         if(this.isComponent)
         {
             cdiv.appendChild(super.CreateSpan("fa fa-square-o","Div"));
+            cdiv.setAttribute("style","background-color:#bd213014; margin: 5PX;")
         }else
         {
             let toolbar=super.CreateToolBar();
             cdiv.appendChild(toolbar);
-            if(!this.isComponent)
             cdiv.setAttribute("compName","Div");
-            cdiv.setAttribute("style","background-color:blue;width: 100%;");
+            cdiv.setAttribute("style","background-color:#f5f3ed;;width: 100%;height: 400px;");
         }
-        cdiv.setAttribute("style","background-color:#bd213014; margin: 5PX;")
+        cdiv.ondrop=x=>{
+            x.preventDefault();
+            const element = ((x.target==x.currentTarget)?x.currentTarget:x.target) as HTMLInputElement
+            var data = x.dataTransfer.getData("text");
+            if(x.currentTarget==x.target)
+                {
+                    var cmp=ComponentHelper.Create(data);            
+                    element.appendChild(cmp);
+                   // element.className="col-5 divcoll" ;
+                }
+        };
+        cdiv.ondragleave=x=> {
+            x.preventDefault();        
+            const element = ((x.target==x.currentTarget)?x.currentTarget:x.target) as HTMLInputElement
+            //element.className="col-6";
+            //this.ClearTempDiv(element);    
+        };
+        cdiv.ondragenter=x=> {
+            x.preventDefault();
+            const element = ((x.target==x.currentTarget)?x.currentTarget:x.target) as HTMLInputElement
+           // element.className="col-6 ContainerColumn";
+        };
         cdiv.id=this.Id;        
         cdiv.draggable=this.draggable;
         super.Create(cdiv);

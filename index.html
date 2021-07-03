@@ -5,6 +5,22 @@
         <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css"/>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#tab-list').on('click', '.close', function() {
+        var tabID = $(this).parents('a').attr('href');
+        $(this).parents('li').remove();
+        $(tabID).remove();
+
+        //display first tab
+        var tabFirst = $('#tab-list a:first');
+        resetTab();
+        tabFirst.tab('show');
+    });
+        });
+
+</script>
         <style>
          .droptarget {
             border: 1px dotted #e60e0e;
@@ -64,7 +80,7 @@
         } */
 
         .component-btn-group {
-            position: absolute;
+            position: relative;
             z-index: 1000;
             margin-top: -2px;
         }
@@ -88,25 +104,50 @@
             font-size: 13px;
             font-family: Arial, Helvetica, sans-serif;
         }
+                table.gridtable {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            color:#333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+        table.gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+        table.gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
         </style>
     </head>
     <body>
 
         <div class="container-fluid">
             <div class="row">
-            <div class="col-2" style="background-color: #80808047;padding: 0px;" >
-                <div class="pgGroupRow"><label style="margin-right: 26px">Kontroller</label></div>
+                <div class="col-2" style="background-color: #80808047;padding: 0px;" >
+                    <div class="pgGroupRow"><label style="margin-right: 26px">Kontroller</label></div>
 
-                <div id=components></div>
-            </div>
-            <div class="col-7" id="MainPanel">
-                
-            </div>
-            <div class="col-3" style="background-color: #80808047;padding: 0px;" id="cpropGrid">
-                
+                    <div id=components></div>
+                </div>
+                <div class="col-7" id="MainPanel">
+                    
+                </div>
+                <div class="col-3" style="background-color: #80808047;padding: 0px;" id="cpropGrid">
+                    
+                </div>
             </div>
         </div>
+        
         <script> var exports = {}; </script>
         <script type="module" src="public/App.js"> </script>
+   
     </body>
 </html>

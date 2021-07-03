@@ -1,9 +1,11 @@
 {
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "@types/bootstrap": "^5.0.16",
     "bootstrap": "^4.6.0",
     "build": "^0.1.4",
     "express": "^4.17.1",
+    "jquery": "^3.6.0",
     "server": "^1.0.33"
   },
   "devDependencies": {

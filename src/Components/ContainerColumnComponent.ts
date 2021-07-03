@@ -43,7 +43,7 @@ export class ContainerColumnComponent implements BaseComponent{
                 cdiv.ondragenter=x=> {
                     x.preventDefault();
                     const element = ((x.target==x.currentTarget)?x.currentTarget:x.target) as HTMLInputElement
-                    element.className="col-6 ContainerColumn";
+                   // element.className="col-6 ContainerColumn";
                 };
                 
                 return cdiv;
