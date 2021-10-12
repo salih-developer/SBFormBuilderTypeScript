@@ -15,7 +15,8 @@ export class LTextboxComponent extends BaseComponent{
                 control.appendChild(this.CreateTextbox());
                 }else
                 {
-                    control.appendChild(super.CreateSpan("fa fa-terminal","Text Field"));
+                    control.className="component-common";
+                    control.appendChild(super.CreateSpan("fa fa-font","Text Field"));
                 }
                 
                 control.setAttribute("compName","LTextbox");

@@ -52,9 +52,9 @@
         }
         
         .pgGroupRow {
-        background-color: #E0ECFF;
-        font-weight: bold;
-        text-align: center;
+            margin: 0;
+            clear: both;
+            padding: 0 8px;
         }
         
         .pgGroupCell {
@@ -125,22 +125,30 @@
             border-style: solid;
             border-color: #666666;
             background-color: #ffffff;
+        }      
+        .component-common{
+            box-sizing: border-box;
+            padding: 2px 3px;
+            width: 50%;
+            float: left;
         }
         </style>
     </head>
     <body>
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding: 5px 5px 5px 5px;">
             <div class="row">
-                <div class="col-2" style="background-color: #80808047;padding: 0px;" >
-                    <div class="pgGroupRow"><label style="margin-right: 26px">Kontroller</label></div>
+                <div class="col-2 controller-background" style="background-color: #EAF8F8;" >
+                    <div class="pgGroupRow">
+                        <h6 style="font-size: 16px;border-bottom: 3px solid #cdedec;">Kontroller</h6>
+                    </div>
 
                     <div id=components></div>
                 </div>
                 <div class="col-7" id="MainPanel">
                     
                 </div>
-                <div class="col-3" style="background-color: #80808047;padding: 0px;" id="cpropGrid">
+                <div class="col-3" style="background-color: #80808047;" id="cpropGrid">
                     
                 </div>
             </div>
