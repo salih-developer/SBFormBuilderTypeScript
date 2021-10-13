@@ -13,14 +13,15 @@ export class TabComponent extends BaseComponent
         
         if(this.isComponent)
         {
-            cdiv.appendChild(super.CreateSpan("fa fa-square-o","Tab"));
-            cdiv.setAttribute("style","background-color:#bd213014; margin: 5PX;    padding-inline-start: 0px;")
+            cdiv.className="component-common";
+            cdiv.appendChild(super.CreateSpan("fa fa-tasks","Tab"));
         }else
         {
             let toolbar=super.CreateToolBar();
             cdiv.appendChild(toolbar);
             cdiv.setAttribute("compName","Tabs");
             cdiv.setAttribute("style","background-color:#f5f3ed;;width: 100%;height: 400px;");
+            cdiv.className="component-prepared"
             var btn=document.createElement("button"); 
             btn.textContent="Add";
             btn.className="pull-right";

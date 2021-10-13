@@ -14,13 +14,16 @@ export class LSelectboxComponent extends BaseComponent{
                     control.appendChild(toolbar);
                     control.appendChild(this.CreateLabel());
                     control.appendChild(this.CreateTextbox());
+                    control.setAttribute("style"," margin: 5PX;")
+                    control.className="component-prepared"
                 }else
                 {
-                    control.appendChild(super.CreateSpan("fa fa-plus-square","Selectbox"));
+                    control.className="component-common";
+                    control.appendChild(super.CreateSpan("fa fa-list","Selectbox"));
                 }
                 control.setAttribute("compName","LSelectbox");
                 control.setAttribute("disabled","");
-               control.setAttribute("style","background-color:#bd213014; margin: 5PX;")
+               
                control.id=this.Id;
                control.draggable=this.draggable;
                control.ondragstart=x=>{

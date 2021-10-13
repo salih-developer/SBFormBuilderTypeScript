@@ -13,8 +13,8 @@ export class DataTableComponent extends BaseComponent
         cdiv.setAttribute("iscomponent",String(this.isComponent));
         if(this.isComponent)
         {
-            cdiv.appendChild(super.CreateSpan("fa fa-square-o","DataTable"));
-            cdiv.setAttribute("style","background-color:#bd213014; margin: 5PX;")
+            cdiv.className="component-common";
+            cdiv.appendChild(super.CreateSpan("fa fa-table","DataTable"));
         }else
         {
             var data = [
@@ -30,6 +30,7 @@ export class DataTableComponent extends BaseComponent
             cdiv.appendChild(toolbar);
             cdiv.setAttribute("compName","DataTable");
             cdiv.setAttribute("style","background-color:#f5f3ed;;width: 100%;height: 400px;");
+            cdiv.className="component-prepared"
             var ctable=document.createElement("table");
             ctable.className="gridtable";
             ctable.setAttribute("width","100%");

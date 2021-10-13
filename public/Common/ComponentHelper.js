@@ -25,11 +25,21 @@ export class ComponentHelper {
             case "DataTable":
                 item = new DataTableComponent(id);
                 break;
+            case "Div":
+                item = new DivComponent(id);
+                break;
             default:
+                item = null;
                 break;
         }
-        item.Id = id;
-        item.isComponent = false;
+        if (item != null) {
+            item.Id = id;
+            item.isComponent = false;
+            item.draggable = true;
+        }
+        else {
+            return null;
+        }
         return item.Create();
     }
 }

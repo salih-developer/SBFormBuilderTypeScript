@@ -19,7 +19,7 @@ export class ContainerColumnComponent implements BaseComponent{
                 if(!this.isComponent)
                 cdiv.setAttribute("compName","ContainerColumn");
                 //cdiv.setAttribute("class","col-5");
-                //cdiv.setAttribute("style","min-height: 50px;margin: 10px;");   
+                cdiv.setAttribute("style","min-height: 50px;");   
                 cdiv.id=this.Id;        
                 cdiv.className="col-6 ContainerColumn"
                 cdiv.draggable=false;
@@ -30,6 +30,10 @@ export class ContainerColumnComponent implements BaseComponent{
                     if(x.currentTarget==x.target)
                         {
                             var cmp=ComponentHelper.Create(data);            
+                            if(cmp==null && data!=null)
+                            {
+                                cmp=document.getElementById(data);                             
+                            }
                             element.appendChild(cmp);
                            // element.className="col-5 divcoll" ;
                         }

@@ -8,7 +8,7 @@ export class ContainerComponent extends BaseComponent{
                 
             var control=document.createElement("div");  
             control.setAttribute("iscomponent",String(this.isComponent));
-            control.setAttribute("style","background-color:#bd213014;margin: 5PX;")
+            
             if(!this.isComponent)
             {
                 let toolbar=super.CreateToolBar();
@@ -17,20 +17,22 @@ export class ContainerComponent extends BaseComponent{
                 control.appendChild(divcol.Create());
                 control.appendChild(divcol.Create());
                 control.setAttribute("compName","Container");
-                control.setAttribute("style","background-color:#b9b3b3a3;height:100px ;")
+                control.setAttribute("style","background-color:#b9b3b3a3;")
+                control.className="component-prepared"
                  control.className="row margin0";
             }else{
-                control.appendChild(super.CreateSpan("fa fa-folder-open","Container"))
+                control.className="component-common";
+                control.appendChild(super.CreateSpan("fa fa-columns","Container"))
             }
             
             control.draggable= this.draggable;
             control.ondragstart=x=>{
-                var dc=control.attributes.getNamedItem("iscomponent");
-                if(dc.value=="false")
-                   {
-                       x.preventDefault();
-                       return;
-                   }
+                // var dc=control.attributes.getNamedItem("iscomponent");
+                // if(dc.value=="false")
+                //    {
+                //        x.preventDefault();
+                //        return;
+                //    }
                 const element = x.target as HTMLInputElement
                 x.dataTransfer.effectAllowed = "move";
                 x.dataTransfer.setData("text", element.id);

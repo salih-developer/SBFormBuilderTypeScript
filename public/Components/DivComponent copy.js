@@ -10,7 +10,7 @@ export class DivComponent extends BaseComponent {
         cdiv.setAttribute("iscomponent", String(this.isComponent));
         if (this.isComponent) {
             cdiv.appendChild(super.CreateSpan("fa fa-square-o", "Div"));
-            cdiv.setAttribute("style", "background-color:#bd213014; margin: 5PX;");
+            cdiv.setAttribute("style", "margin: 5PX;");
         }
         else {
             let toolbar = super.CreateToolBar();

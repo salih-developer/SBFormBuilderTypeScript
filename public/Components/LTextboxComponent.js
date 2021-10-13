@@ -11,6 +11,7 @@ export class LTextboxComponent extends BaseComponent {
             control.appendChild(toolbar);
             control.appendChild(this.CreateLabel());
             control.appendChild(this.CreateTextbox());
+            control.className = "component-prepared";
         }
         else {
             control.className = "component-common";
@@ -18,7 +19,6 @@ export class LTextboxComponent extends BaseComponent {
         }
         control.setAttribute("compName", "LTextbox");
         control.setAttribute("disabled", "");
-        control.setAttribute("style", "background-color:#bd213014; margin: 5PX;");
         control.draggable = this.draggable;
         control.ondragstart = x => {
             const element = x.target;
@@ -31,7 +31,7 @@ export class LTextboxComponent extends BaseComponent {
     CreateLabel() {
         var label = document.createElement("label");
         label.textContent = "Label Textbox";
-        label.setAttribute("style", "margin-right: 26px");
+        //label.setAttribute("style","margin-right: 26px");
         return label;
     }
     CreateTextbox() {

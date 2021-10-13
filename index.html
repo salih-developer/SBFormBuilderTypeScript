@@ -34,9 +34,11 @@
           } 
           .ContainerColumn{
             border:1px solid #80808087;
-        }
+            padding: 0px;
+          }
           div.ContainerColumn:hover{
               background-color: #cac6c6;
+              padding: 0px;
           }
         
           .margin0{
@@ -128,17 +130,33 @@
         }      
         .component-common{
             box-sizing: border-box;
-            padding: 2px 3px;
-            width: 50%;
+            border-radius: 4px;
             float: left;
+            height: 25px;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ceeae9;
+            padding: 5px 1px 5px 1px;
+            line-height: 1.2;
+            margin: 0px;
+        }
+        .component-common:hover {
+            background: #f4f4f4;
+        }
+        .component-prepared{
+            background-color: #bd213014;
+             margin: 5PX;
+        }
+        .component-prepared:hover {
+            background: #f4f4f4;
         }
         </style>
     </head>
     <body>
 
         <div class="container-fluid" style="padding: 5px 5px 5px 5px;">
-            <div class="row">
-                <div class="col-2 controller-background" style="background-color: #EAF8F8;" >
+            <div class="row margin0" >
+                <div class="col-2" style="background-color: #EAF8F8;padding: 3px;" >
                     <div class="pgGroupRow">
                         <h6 style="font-size: 16px;border-bottom: 3px solid #cdedec;">Kontroller</h6>
                     </div>
@@ -148,7 +166,7 @@
                 <div class="col-7" id="MainPanel">
                     
                 </div>
-                <div class="col-3" style="background-color: #80808047;" id="cpropGrid">
+                <div class="col-3" style="background-color: #80808047;padding: 0px;" id="cpropGrid">
                     
                 </div>
             </div>

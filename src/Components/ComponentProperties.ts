@@ -56,4 +56,5 @@ export class ComponentProperties{
       label.setAttribute("style","margin-right: 26px");
       return label;
    }
+   
 }

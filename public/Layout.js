@@ -10,9 +10,6 @@ export class Layout {
         var layoutPanel = document.createElement('div');
         layoutPanel.id = "LayoutPanel";
         layoutPanel.setAttribute("style", "background-color:#8080800a;height:600px");
-        layoutPanel.ondragover = x => {
-            x.preventDefault();
-        };
         layoutPanel.ondragenter = x => {
             x.preventDefault();
             const element = x.currentTarget;
@@ -22,20 +19,37 @@ export class Layout {
                 // var cmp=this.GetHTMLElement("divtmp");
                 // element.appendChild(cmp);
             }
+            console.log("ondragenter" + x.dataTransfer.getData("text"));
         };
         layoutPanel.ondragleave = x => {
             x.preventDefault();
             const element = x.currentTarget;
             layoutPanel.className = "";
+            console.log("ondragleave" + x.dataTransfer.getData("text"));
+        };
+        layoutPanel.ondragstart = x => {
+            console.log("ondragstart" + x.dataTransfer.getData("text"));
+            // x.dataTransfer.setData("text",x.dataTransfer.getData("text"))
+        };
+        layoutPanel.ondragover = x => {
+            console.log("ondragover" + x.dataTransfer.getData("text"));
+            x.preventDefault();
         };
         layoutPanel.ondrop = x => {
             x.preventDefault();
             const element = x.currentTarget;
             var data = x.dataTransfer.getData("text");
+            console.log("sonuç" + data);
             if (x.currentTarget == x.target) {
                 var cmp = ComponentHelper.Create(data);
-                element.appendChild(cmp);
-                element.className = "";
+                if (cmp == null && data != null) {
+                    cmp = document.getElementById(data);
+                    element.appendChild(cmp);
+                }
+                else {
+                    element.appendChild(cmp);
+                    element.className = "";
+                }
             }
         };
         document.getElementById("MainPanel").appendChild(layoutPanel);
