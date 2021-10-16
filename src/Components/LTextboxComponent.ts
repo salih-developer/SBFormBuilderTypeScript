@@ -36,13 +36,14 @@ export class LTextboxComponent extends BaseComponent{
             private CreateLabel(){
                 var label=document.createElement("label");
                 label.textContent="Label Textbox";
-                //label.setAttribute("style","margin-right: 26px");
+                label.id=this.Id+"_label";
                 return label;
             }
             private  CreateTextbox(){
                var textbox= document.createElement("input");
                textbox.setAttribute("type","text");
                textbox.setAttribute("disabled","");
+               textbox.id=this.Id+"_input";
                return textbox;
             }
             

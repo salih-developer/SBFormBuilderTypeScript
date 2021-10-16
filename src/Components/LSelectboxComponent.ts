@@ -39,6 +39,7 @@ export class LSelectboxComponent extends BaseComponent{
                 var label=document.createElement("label");
                 label.textContent="Label SelectBox";
                 label.setAttribute("style","margin-right: 26px");
+                label.id=this.Id+"_label";
                 return label;
             }
             private  CreateTextbox(){
@@ -46,6 +47,7 @@ export class LSelectboxComponent extends BaseComponent{
                textbox.setAttribute("type","text");
                textbox.setAttribute("disabled","");
                textbox.setAttribute("style","width: 100px;");
+               textbox.id=this.Id+"_input";
                return textbox;
             }
     

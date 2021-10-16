@@ -53,6 +53,7 @@ export class BaseComponent {
             var componentProperties = new ComponentProperties();
             var table = componentProperties.Create(eln.parentElement.parentElement.parentElement);
             ppanel.appendChild(table);
+            ppanel.setAttribute("selectedInput", eln.parentElement.parentElement.parentElement.id);
         });
         var editi = document.createElement("i");
         editi.className = "fa fa-cog";
@@ -65,7 +66,7 @@ export class BaseComponent {
             var data = Utility.ParentByAttributeIsComponent(element);
             x.dataTransfer.items.clear();
             x.dataTransfer.clearData("text");
-            x.dataTransfer.setData("text", "asdasd");
+            x.dataTransfer.setData("text", data.id);
             x.dataTransfer.effectAllowed = "move";
             console.log(data.id);
         };
