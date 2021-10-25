@@ -5,8 +5,62 @@ import { ComponentHelper } from "./Common/ComponentHelper.js";
 import { LSelectboxComponent } from "./Components/LSelectboxComponent.js";
 import { TabComponent } from "./Components/TabComponent.js";
 import { DataTableComponent } from "./Components/DataTableComponent.js";
+import { ControlInfo } from "./Model/ControlInfo.js";
+import { PropertiesOfControl } from "./Common/PropertiesOfControl.js";
 export class Layout {
     constructor() {
+        this.CreateToolbar();
+        this.CreateAndLoadLayoutPanel();
+    }
+    CreateToolbar() {
+        var btnSave = document.getElementById("btnSave");
+        btnSave.onclick = x => {
+            var exportArray = new Array();
+            var layout = document.getElementById("LayoutPanel");
+            var coms = this.RecursiveEach(layout);
+            if (coms.length > 0)
+                exportArray.push(this.RecursiveEach(layout));
+            console.log(JSON.stringify(exportArray));
+        };
+        var btnSave = document.getElementById("btnLoad");
+        btnSave.onclick = x => {
+            alert("load");
+        };
+    }
+    RecursiveEach(melm) {
+        var localarr = new Array();
+        for (let index = 0; index < melm.children.length; index++) {
+            const element = melm.children[index];
+            var _obj = null;
+            if (element.getAttribute("compname") != undefined) {
+                _obj = new ControlInfo(element.getAttribute("compname"), new Array());
+                localarr.push(_obj);
+                var prop = PropertiesOfControl.ComponentPropertiesDic[element.getAttribute("compname")];
+                prop.forEach(attr => {
+                    var val = element.getAttribute(attr.name);
+                    _obj.Attributes[attr.name] = val;
+                });
+            }
+            var coms = this.RecursiveEach(element);
+            if (coms.length > 0) {
+                _obj.subComps = coms;
+            }
+        }
+        return localarr;
+    }
+    Load() {
+        var viewstr = '[[{"compName":"LTextbox","subComps":[]},{"compName":"LSelectbox","subComps":[]},{"compName":"Container","subComps":[{"compName":"ContainerColumn","subComps":[{"compName":"LTextbox","subComps":[]}]},{"compName":"ContainerColumn","subComps":[{"compName":"LSelectbox","subComps":[]}]}]}]]';
+        var layoutArray = JSON.parse(viewstr);
+        var layoutPanel = document.getElementById("LayoutPanel");
+        this.RecursiveLoad(layoutPanel, layoutArray);
+    }
+    RecursiveLoad(layoutPanel, layoutArray) {
+        for (let index = 0; index < layoutArray.length; index++) {
+            const element = layoutArray[index];
+            console.log(element.compName);
+        }
+    }
+    CreateAndLoadLayoutPanel() {
         var layoutPanel = document.createElement('div');
         layoutPanel.id = "LayoutPanel";
         layoutPanel.setAttribute("style", "background-color:#8080800a;height:600px");

@@ -16,7 +16,12 @@ export class PropertiesOfControl{
             ),
             "Container": Array(),
             "Tabs": Array(),
-            "DataTable": Array(),
+            "DataTable": Array(
+                { "id": 0, "name": "P_Name",title:"Name",ctype:"textbox" },
+                { "id": 1, "name": "P_TargetTable",title:"Target Table",ctype:"textbox" },
+                { "id": 2, "name": "P_TargetField",title:"Target Field",ctype:"textbox"},
+                { "id": 2, "name": "P_WhereCondition",title:"Where Condition",ctype:"textbox"},
+            ),
             "Div": Array()              
         }
         
