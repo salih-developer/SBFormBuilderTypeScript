@@ -3,7 +3,7 @@ export class LTextboxComponent extends BaseComponent {
     constructor(id) {
         super(id);
     }
-    Create() {
+    Create(pcontrol) {
         var control = document.createElement('div');
         control.setAttribute("iscomponent", String(this.isComponent));
         if (!this.isComponent) {
@@ -22,7 +22,8 @@ export class LTextboxComponent extends BaseComponent {
         control.draggable = this.draggable;
         control.ondragstart = x => {
             const element = x.target;
-            x.dataTransfer.effectAllowed = "move";
+            x.dataTransfer.effectAllowed = element.className == "component-common" ? "copy" : "move";
+            x.dataTransfer.dropEffect = element.className == "component-common" ? "copy" : "move";
             x.dataTransfer.setData("text", element.id);
         };
         super.Create(control);
@@ -42,3 +43,4 @@ export class LTextboxComponent extends BaseComponent {
         return textbox;
     }
 }
+//# sourceMappingURL=LTextboxComponent.js.map

@@ -1,8 +1,8 @@
-import { PropertiesOfControl } from "../Common/PropertiesOfControl.js";
 
+import { PropertiesOfControl } from "../Common/PropertiesOfControl.js";
 export class ComponentProperties{
    Create(selectedControl:Element):HTMLElement{
-    
+      
     var table: HTMLTableElement = <HTMLTableElement> document.createElement("Table");
     table.className="pgTable";
 
@@ -12,18 +12,41 @@ export class ComponentProperties{
     cell1.setAttribute("colspan","2");
     cell1.appendChild(this.CreateEditorLabel());
 
-    var row1 = table.insertRow(1);
+    var row2 = table.insertRow(1);
+    row2.className="pgRow";
+    var cell=row2.insertCell(0);
+    cell.className="pgCell";
+    cell.innerText="Comp. Name";
+    cell=row2.insertCell(1);
+    cell.className="pgCell";
+    cell.setAttribute("style","color:red");
+    //cell.innerText=selectedControl.getAttribute("compname");        
+    var comName= document.createElement("input");
+    comName.value=selectedControl.getAttribute("compname");
+    comName.id="P_CompName";
+    comName.disabled=true;
+    cell.appendChild(comName);
+
+
+    var row1 = table.insertRow(2);
     row1.className="pgRow";
     var cell=row1.insertCell(0);
     cell.className="pgCell";
-    cell.innerText="Comp. Name";
+    cell.innerText="Id";
     cell=row1.insertCell(1);
     cell.className="pgCell";
-    cell.setAttribute("style","color:red");
-    cell.innerText=selectedControl.getAttribute("compname");
+    cell.setAttribute("style","color:black");
+    //cell.innerText=selectedControl.getAttribute("id");
+    var comId= document.createElement("input");
+    comId.value=selectedControl.getAttribute("id");
+    comId.id="P_CompId";
+    comId.disabled=true;
+    cell.appendChild(comId);
+
+
 
     PropertiesOfControl.ComponentPropertiesDic[selectedControl.getAttribute("compname")].forEach(element => {
-      var row = table.insertRow(element.id+2);
+      var row = table.insertRow(element.id+3);
       row.className="pgRow";
       var cell=row.insertCell(0);
       cell.className="pgCell";
@@ -71,15 +94,29 @@ export class ComponentProperties{
       rs.id=name;
       
       rs.onkeyup=x=>{
-         var selectedInputId= document.getElementById("cpropGrid").attributes.getNamedItem("selectedInput").value
-         var selectedInput= document.getElementById(selectedInputId);
-         var tg=x.target as HTMLInputElement;
-         selectedInput.setAttribute(name, tg.value);
+         //var selectedInputId= document.getElementById("cpropGrid").attributes.getNamedItem("selectedInput").value
+         var compname=document.getElementById("P_CompName") as HTMLInputElement;
+         var compId= document.getElementById("P_CompId") as HTMLInputElement;
+          var tg=x.target as HTMLInputElement;
+         // compId.setAttribute(name, tg.value);
+
          if(name=="P_Caption")
          {
-            var labelselectedInput= document.getElementById(selectedInput.id+"_label");
-            labelselectedInput.textContent=tg.value;
+            // var labelselectedInput= document.getElementById(compId.value+"_label");
+            // labelselectedInput.textContent=tg.value;
+         }else if(name=="P_ColumnCount")
+         {
+            var container = document.getElementById(compId.value);
+            var ccount=container.querySelectorAll('ContainerColumn').length;
+            if(Number.parseInt(tg.value)>ccount)
+            {              
+               for (let index = ccount; index < Number.parseInt(tg.value); index++) {
+                 //var div= ContainerColumnComponent.CreateColumn(Number.parseInt(tg.value))
+                 // container.appendChild(div);
+               }   
+            }
          }
+
       }      
       rs.className="propertyInput"
       return rs as HTMLElement;

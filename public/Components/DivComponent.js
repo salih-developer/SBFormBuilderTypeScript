@@ -5,7 +5,7 @@ export class DivComponent extends BaseComponent {
         id = "Div";
         super(id);
     }
-    Create() {
+    Create(control) {
         var cdiv = document.createElement('div');
         cdiv.setAttribute("iscomponent", String(this.isComponent));
         if (this.isComponent) {
@@ -23,10 +23,15 @@ export class DivComponent extends BaseComponent {
             x.preventDefault();
             const element = ((x.target == x.currentTarget) ? x.currentTarget : x.target);
             var data = x.dataTransfer.getData("text");
-            if (x.currentTarget == x.target) {
+            if (x.dataTransfer.effectAllowed === 'copy') {
                 var cmp = ComponentHelper.Create(data);
                 element.appendChild(cmp);
-                // element.className="col-5 divcoll" ;
+            }
+            if (x.dataTransfer.effectAllowed === 'move') {
+                var moveitem = document.getElementById(data);
+                if (moveitem != null) {
+                    element.appendChild(moveitem);
+                }
             }
         };
         cdiv.ondragleave = x => {
@@ -42,7 +47,8 @@ export class DivComponent extends BaseComponent {
         };
         cdiv.ondragstart = x => {
             const element = x.target;
-            x.dataTransfer.effectAllowed = "move";
+            x.dataTransfer.effectAllowed = element.className == "component-common" ? "copy" : "move";
+            x.dataTransfer.dropEffect = element.className == "component-common" ? "copy" : "move";
             x.dataTransfer.setData("text", element.id);
         };
         cdiv.id = this.Id;
@@ -51,3 +57,4 @@ export class DivComponent extends BaseComponent {
         return cdiv;
     }
 }
+//# sourceMappingURL=DivComponent.js.map

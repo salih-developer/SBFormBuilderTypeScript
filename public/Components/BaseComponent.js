@@ -6,18 +6,6 @@ export class BaseComponent {
     }
     Create(control) {
         control.id = this.Id;
-        //   if(!this.isComponent){
-        //     control.addEventListener('click', function (event) {
-        //       var ppanel=document.getElementById("cpropGrid");
-        //       ppanel.childNodes.forEach(element => {
-        //         element.remove();
-        //       });
-        //       var elem=(event.currentTarget as HTMLElement);
-        //       var componentProperties=new ComponentProperties();
-        //       var table=componentProperties.Create(elem);
-        //       ppanel.appendChild(table);
-        //     });
-        // }
         return control;
     }
     CreateToolBar() {
@@ -103,3 +91,4 @@ export class BaseComponent {
         return span;
     }
 }
+//# sourceMappingURL=BaseComponent.js.map

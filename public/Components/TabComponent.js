@@ -5,7 +5,7 @@ export class TabComponent extends BaseComponent {
         id = "Tabs";
         super(id);
     }
-    Create() {
+    Create(control) {
         var cdiv = document.createElement('div');
         cdiv.setAttribute("iscomponent", String(this.isComponent));
         if (this.isComponent) {
@@ -25,8 +25,8 @@ export class TabComponent extends BaseComponent {
             btn.addEventListener('click', function (event) {
                 var divs = document.querySelectorAll('.close');
                 var cd = divs.length;
-                $('#tab-list').append($('<li class="nav-item"><button class="close" type="button">×</button><a href="#tab' + cd + '" role="tab"  class="nav-link" data-toggle="tab"><span>Tab ' + cd + '</span> <span class="glyphicon glyphicon-pencil text-muted edit"></span></a></li>'));
-                $('#tab-content').append($('<div class="tab-pane fade" style="height: 300px;" id="tab' + cd + '">Tab ' + cd + ' content</div>'));
+                $('#tab-list').append($('<li class="nav-item" id="contenttab' + cd + '"><button class="close" type="button">×</button><a href="#tab' + cd + '" role="tab"  class="nav-link" data-toggle="tab"><span>Tab ' + cd + '</span> <span class="glyphicon glyphicon-pencil text-muted edit"></span></a></li>'));
+                $('#tab-content').append($('<div class="tab-pane fade" style="height: 300px;" draggable="true" id="tab' + cd + '">Tab ' + cd + ' content</div>'));
                 divs = document.querySelectorAll('.close');
                 divs.forEach(el => el.addEventListener('click', event => {
                     var el = event.currentTarget;
@@ -40,6 +40,23 @@ export class TabComponent extends BaseComponent {
                     var tabFirst = $('#tab-list a:first');
                     tabFirst.tab('show');
                 }));
+                let tabcontent = document.getElementById("tab" + cd);
+                tabcontent.ondrop = x => {
+                    x.preventDefault();
+                    const element = ((x.target == x.currentTarget) ? x.currentTarget : x.target);
+                    var data = x.dataTransfer.getData("text");
+                    if (x.dataTransfer.effectAllowed === 'copy') {
+                        var cmp = ComponentHelper.Create(data);
+                        element.appendChild(cmp);
+                    }
+                    if (x.dataTransfer.effectAllowed === 'move') {
+                        var moveitem = document.getElementById(data);
+                        if (moveitem != null) {
+                            element.appendChild(moveitem);
+                        }
+                    }
+                };
+                $('#tab-list #contenttab' + cd + ' a').tab("show");
             });
             cdiv.appendChild(btn);
             var cul = document.createElement("ul");
@@ -48,6 +65,7 @@ export class TabComponent extends BaseComponent {
             cul.setAttribute("role", "tablist");
             var cli = document.createElement("li");
             cli.className = "nav-item";
+            cli.id = "contenttab0";
             var ca = document.createElement("a");
             ca.setAttribute("role", "tab");
             ca.setAttribute("href", "#tab0");
@@ -82,16 +100,28 @@ export class TabComponent extends BaseComponent {
                 x.preventDefault();
                 const element = ((x.target == x.currentTarget) ? x.currentTarget : x.target);
                 var data = x.dataTransfer.getData("text");
-                if (x.currentTarget == x.target) {
+                if (x.dataTransfer.effectAllowed === 'copy') {
                     var cmp = ComponentHelper.Create(data);
                     element.appendChild(cmp);
-                    // element.className="col-5 divcoll" ;
                 }
+                if (x.dataTransfer.effectAllowed === 'move') {
+                    var moveitem = document.getElementById(data);
+                    if (moveitem != null) {
+                        element.appendChild(moveitem);
+                    }
+                }
+                // if(x.currentTarget==x.target)
+                //     {
+                //         var cmp=ComponentHelper.Create(data);
+                //         element.appendChild(cmp);
+                //        // element.className="col-5 divcoll" ;
+                //     }
             };
         }
         cdiv.ondragstart = x => {
             const element = x.target;
-            x.dataTransfer.effectAllowed = "move";
+            x.dataTransfer.effectAllowed = element.className == "component-common" ? "copy" : "move";
+            x.dataTransfer.dropEffect = element.className == "component-common" ? "copy" : "move";
             x.dataTransfer.setData("text", element.id);
         };
         cdiv.id = this.Id;
@@ -100,3 +130,4 @@ export class TabComponent extends BaseComponent {
         return cdiv;
     }
 }
+//# sourceMappingURL=TabComponent.js.map

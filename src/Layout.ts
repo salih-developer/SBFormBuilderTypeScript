@@ -40,10 +40,11 @@ export class Layout {
                 _obj = new ControlInfo(element.getAttribute("compname"), new Array<ControlInfo>());
                 localarr.push(_obj);
                 var prop = PropertiesOfControl.ComponentPropertiesDic[element.getAttribute("compname")];
-                prop.forEach(attr => {
-                    var val = element.getAttribute(attr.name);
-                    _obj.Attributes[attr.name] =  val ;
-                });
+                if (prop!=undefined && prop.length > 0)
+                    prop.forEach(attr => {
+                        var val = element.getAttribute(attr.name);
+                        _obj.Attributes[attr.name] = val;
+                    });
             }
             var coms = this.RecursiveEach(element);
             if (coms.length > 0) {

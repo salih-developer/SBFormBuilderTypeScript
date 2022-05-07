@@ -2,6 +2,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@types/bootstrap": "^5.0.16",
+    "@types/kendo-ui": "^2022.1.1",
     "bootstrap": "^4.6.0",
     "build": "^0.1.4",
     "buildnpm": "^1.0.4",

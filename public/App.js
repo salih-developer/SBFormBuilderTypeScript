@@ -5,3 +5,4 @@ export class App {
     }
 }
 App.main();
+//# sourceMappingURL=App.js.map

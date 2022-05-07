@@ -1,7 +1,6 @@
-import { Interface } from "node:readline";
 import { Utility } from "../Common/Utility.js";
 import { ComponentProperties } from "./ComponentProperties.js";
-import { IBaseComponent } from "./IBaseComponent";
+import { IBaseComponent } from "./IBaseComponent.js";
 
 export abstract class BaseComponent implements IBaseComponent {
   Id: string;
@@ -15,19 +14,6 @@ export abstract class BaseComponent implements IBaseComponent {
 
   Create(control: HTMLElement): HTMLElement {
     control.id = this.Id;
-    //   if(!this.isComponent){
-    //     control.addEventListener('click', function (event) {
-    //       var ppanel=document.getElementById("cpropGrid");
-
-    //       ppanel.childNodes.forEach(element => {
-    //         element.remove();
-    //       });
-    //       var elem=(event.currentTarget as HTMLElement);
-    //       var componentProperties=new ComponentProperties();
-    //       var table=componentProperties.Create(elem);
-    //       ppanel.appendChild(table);
-    //     });
-    // }
     return control;
   }
   CreateToolBar(): HTMLElement {

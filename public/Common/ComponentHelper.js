@@ -8,7 +8,7 @@ import { DataTableComponent } from "../Components/DataTableComponent.js";
 export class ComponentHelper {
     static Create(controlType = "") {
         var id = Guid.newGuid();
-        var item = new DivComponent("Div");
+        var item;
         switch (controlType) {
             case "LTextbox":
                 item = new LTextboxComponent(id);
@@ -29,7 +29,7 @@ export class ComponentHelper {
                 item = new DivComponent(id);
                 break;
             default:
-                item = null;
+                item = new DivComponent("Div");
                 break;
         }
         if (item != null) {
@@ -40,6 +40,7 @@ export class ComponentHelper {
         else {
             return null;
         }
-        return item.Create();
+        return item.Create(null);
     }
 }
+//# sourceMappingURL=ComponentHelper.js.map

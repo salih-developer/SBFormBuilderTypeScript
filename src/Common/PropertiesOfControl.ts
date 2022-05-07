@@ -14,7 +14,7 @@ export class PropertiesOfControl{
                 { "id": 2, "name": "P_Caption",title:"Caption",ctype:"textbox"},
                 { "id": 3, "name": "P_Required",title:"Zorunlu",ctype:"checkbox"}
             ),
-            "Container": Array(),
+            "Container": Array({ "id": 0, "name": "P_ColumnCount",title:"Column Count",ctype:"textbox" }),
             "Tabs": Array(),
             "DataTable": Array(
                 { "id": 0, "name": "P_Name",title:"Name",ctype:"textbox" },

@@ -1,4 +1,3 @@
-import { table } from "node:console";
 import { ComponentHelper } from "../Common/ComponentHelper.js";
 import { BaseComponent } from "./BaseComponent.js";
 
@@ -8,7 +7,7 @@ export class DataTableComponent extends BaseComponent
         id="DataTable";
         super(id);
     }
-    Create(): HTMLElement {
+    Create(control: HTMLElement): HTMLElement {
         var cdiv=document.createElement('div');
         cdiv.setAttribute("iscomponent",String(this.isComponent));
         if(this.isComponent)
@@ -29,7 +28,7 @@ export class DataTableComponent extends BaseComponent
             let toolbar=super.CreateToolBar();
             cdiv.appendChild(toolbar);
             cdiv.setAttribute("compName","DataTable");
-            cdiv.setAttribute("style","background-color:#f5f3ed;;width: 100%;height: 400px;");
+            cdiv.setAttribute("style","background-color:#f5f3ed;;width: 100%;");
             cdiv.className="component-prepared"
             var ctable=document.createElement("table");
             ctable.className="gridtable";
@@ -59,7 +58,8 @@ export class DataTableComponent extends BaseComponent
         }
         cdiv.ondragstart=x=>{
             const element = x.target as HTMLInputElement
-            x.dataTransfer.effectAllowed = "move";
+            x.dataTransfer.effectAllowed = element.className=="component-common"?"copy":"move";
+            x.dataTransfer.dropEffect = element.className=="component-common"?"copy":"move";
             x.dataTransfer.setData("text", element.id);
         };        
         cdiv.id=this.Id;        

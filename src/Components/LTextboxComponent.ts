@@ -4,7 +4,7 @@ export class LTextboxComponent extends BaseComponent{
     constructor(id:string) {
         super(id);
     }
-    Create(): HTMLElement {
+    Create(pcontrol: HTMLElement): HTMLElement {
                 var control=document.createElement('div');
                 control.setAttribute("iscomponent",String(this.isComponent));
                 if(!this.isComponent)
@@ -25,8 +25,9 @@ export class LTextboxComponent extends BaseComponent{
                
                control.draggable=this.draggable;
                control.ondragstart=x=>{
-                    const element = x.target as HTMLInputElement
-                    x.dataTransfer.effectAllowed = "move";
+                    const element = x.target as HTMLInputElement;
+                    x.dataTransfer.effectAllowed = element.className=="component-common"?"copy":"move";
+                    x.dataTransfer.dropEffect = element.className=="component-common"?"copy":"move";
                     x.dataTransfer.setData("text", element.id);
                 };        
                 super.Create(control);

@@ -5,11 +5,12 @@ import { LTextboxComponent } from "../Components/LTextboxComponent.js";
 import { Guid } from "../Common/Guid.js";
 import { TabComponent } from "../Components/TabComponent.js";
 import { DataTableComponent } from "../Components/DataTableComponent.js";
+import { BaseComponent } from "../Components/BaseComponent.js";
 
 export class ComponentHelper {    
    public static Create(controlType:string=""): HTMLElement {
        var id = Guid.newGuid();
-        var item=new DivComponent("Div");
+        var item:BaseComponent;
           switch (controlType) {
               case "LTextbox":
                   item=new LTextboxComponent(id);
@@ -31,7 +32,7 @@ export class ComponentHelper {
                   item=new DivComponent(id);
                     break;
               default:
-                item=null;
+                item=new DivComponent("Div");
                   break;
           }
           if(item!=null)
@@ -42,7 +43,7 @@ export class ComponentHelper {
           }else
           {return null;}
           
-        return item.Create();
+        return item.Create(null);
     }
    
 }
